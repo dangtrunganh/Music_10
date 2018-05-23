@@ -13,6 +13,6 @@ public class FetchGenreFromUrl extends BaseFetchSongFromUrl {
 
     @Override
     protected JSONObject getJsonSong(JSONObject jsonObject) throws JSONException {
-        return jsonObject.getJSONObject(SongConstant.TRACK);
+        return jsonObject.getJSONObject(Song.SongEntry.TRACK);
     }
 }
