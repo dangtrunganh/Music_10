@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">VTAMusic</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_song_name">How long</string>
+    <string name="title_default_artist">Charlie Puth</string>
+    <string name="title_search_song">Search song…</string>
+    <string name="default_duration">00:00</string>
+    <string name="title_personal">Person</string>
+    <string name="title_favourite">Favourite</string>
+    <string name="title_other">Other</string>
 </resources>
