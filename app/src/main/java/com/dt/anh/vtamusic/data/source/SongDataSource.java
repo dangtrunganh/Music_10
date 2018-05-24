@@ -11,7 +11,7 @@ public interface SongDataSource {
 
     interface RemoteDataSource {
         void getRemoteSongs(String genre, int limit, int offSet,
-                           OnFetchDataListener<Song> listener);
+                            OnFetchDataListener<Song> listener);
     }
 
     interface OnFetchDataListener<T> {

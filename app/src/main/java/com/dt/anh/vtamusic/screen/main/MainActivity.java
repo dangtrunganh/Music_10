@@ -1,16 +1,22 @@
 package com.dt.anh.vtamusic.screen.main;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.internal.BottomNavigationItemView;
+import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.dt.anh.vtamusic.R;
 import com.dt.anh.vtamusic.screen.BaseActivity;
+import com.dt.anh.vtamusic.screen.songonline.online.SongOnlineFragment;
+
+import java.lang.reflect.Field;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -25,6 +31,7 @@ public class MainActivity extends BaseActivity implements
     private TextView mTextTitle;
     private TextView mTextArtist;
     private ConstraintLayout mConstraintControlMusic;
+    private SongOnlineFragment mSongOnlineFragment;
 
     @Override
     protected void registerListeners() {
@@ -41,6 +48,11 @@ public class MainActivity extends BaseActivity implements
         addOnlineSongFragment();
     }
 
+    @Override
+    protected int getLayoutActivity() {
+        return R.layout.activity_main;
+    }
+
     /**
      * Initialize all views of this screen
      */
@@ -54,11 +66,7 @@ public class MainActivity extends BaseActivity implements
         mTextTitle = findViewById(R.id.text_title_control_music);
         mTextArtist = findViewById(R.id.text_artist_control_music);
         mConstraintControlMusic = findViewById(R.id.constraint_control_music);
-    }
-
-    @Override
-    protected int getLayoutActivity() {
-        return R.layout.activity_main;
+        disableShiftMode(mBottomNavigationView);
     }
 
     @Override
@@ -107,7 +115,12 @@ public class MainActivity extends BaseActivity implements
      * Add online fragment into main screen
      */
     private void addOnlineSongFragment() {
-
+        if (mSongOnlineFragment == null) {
+            mSongOnlineFragment = new SongOnlineFragment();
+        }
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_container, mSongOnlineFragment)
+                .commit();
     }
 
     @Override
@@ -156,5 +169,31 @@ public class MainActivity extends BaseActivity implements
      */
     private void moveToPreviousSong() {
 
+    }
+
+    /**
+     * Disable shift mode of BottomNavigationView
+     *
+     * @param view BottomNavigationView
+     */
+    @SuppressLint("RestrictedApi")
+    public void disableShiftMode(BottomNavigationView view) {
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
+        try {
+            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
+            shiftingMode.setAccessible(true);
+            shiftingMode.setBoolean(menuView, false);
+            shiftingMode.setAccessible(false);
+            for (int i = 0; i < menuView.getChildCount(); i++) {
+                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
+                item.setShiftingMode(false);
+                // set once again checked value, so view will be updated
+                item.setChecked(item.getItemData().isChecked());
+            }
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

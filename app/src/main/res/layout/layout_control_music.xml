@@ -4,7 +4,7 @@
     android:id="@+id/constraint_control_music"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_grey"
+    android:background="@color/color_catskill_white"
     android:paddingBottom="@dimen/dp_8"
     android:paddingTop="@dimen/dp_8">
 
@@ -47,8 +47,8 @@
         android:layout_marginBottom="@dimen/dp_8"
         android:layout_marginLeft="@dimen/dp_8"
         android:layout_marginStart="@dimen/dp_8"
-        android:text="@string/title_default_artist"
         android:maxLines="1"
+        android:text="@string/title_default_artist"
         app:layout_constraintStart_toEndOf="@+id/circle_image_song_small"
         app:layout_constraintTop_toBottomOf="@+id/text_title_control_music" />
 

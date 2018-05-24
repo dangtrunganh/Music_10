@@ -3,7 +3,7 @@ package com.dt.anh.vtamusic.data.source.local;
 import com.dt.anh.vtamusic.data.model.Song;
 import com.dt.anh.vtamusic.data.source.SongDataSource;
 
-public class SongLocalDataSource implements SongDataSource.LocalDataSource{
+public class SongLocalDataSource implements SongDataSource.LocalDataSource {
     private static SongLocalDataSource sSongLocalDataSource;
 
     public SongLocalDataSource() {
@@ -18,6 +18,5 @@ public class SongLocalDataSource implements SongDataSource.LocalDataSource{
 
     @Override
     public void getLocalSongs(String category, SongDataSource.OnFetchDataListener<Song> listener) {
-
     }
 }
