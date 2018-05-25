@@ -15,7 +15,7 @@
         app:tabGravity="fill"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="@android:color/black" />
+        app:tabTextColor="@color/color_black_haze" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_genre"

@@ -4,7 +4,7 @@ import com.dt.anh.vtamusic.data.model.Song;
 import com.dt.anh.vtamusic.data.source.local.SongLocalDataSource;
 import com.dt.anh.vtamusic.data.source.remote.SongRemoteDataSource;
 
-public class SongRepository implements SongDataSource.RemoteDataSource, SongDataSource.LocalDataSource{
+public class SongRepository implements SongDataSource.RemoteDataSource, SongDataSource.LocalDataSource {
     private static SongRepository sSongRepository;
     private SongDataSource.RemoteDataSource mRemoteDataSource;
     private SongDataSource.LocalDataSource mLocalDataSource;
@@ -22,6 +22,7 @@ public class SongRepository implements SongDataSource.RemoteDataSource, SongData
         }
         return sSongRepository;
     }
+
     @Override
     public void getRemoteSongs(String genre, int limit, int offSet, SongDataSource.OnFetchDataListener<Song> listener) {
         if (mRemoteDataSource == null) {

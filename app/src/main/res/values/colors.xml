@@ -3,7 +3,9 @@
     <color name="colorPrimary">#00bcd4</color>
     <color name="colorPrimaryDark">#0097a7</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="color_grey">#eff2f7</color>
+    <color name="color_catskill_white">#eff2f7</color>
+    <color name="color_heather">#c0ccda</color>
     <color name="color_black">#000000</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="color_black_haze">#8cf6f7f7</color>
 </resources>
