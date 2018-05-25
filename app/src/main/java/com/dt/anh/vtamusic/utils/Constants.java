@@ -12,6 +12,6 @@ public class Constants {
     public static final String LIMIT = "limit";
     public static final String OFFSET = "offset";
     public static final String GENRE_ALL_MUSIC = "all-music";
-    public static final int LIMIT_20 = 20;
-    public static final int OFFSET_20 = 20;
+    public static final int LIMIT_NUMBER = 20;
+    public static final int OFFSET_NUMBER = 20;
 }
