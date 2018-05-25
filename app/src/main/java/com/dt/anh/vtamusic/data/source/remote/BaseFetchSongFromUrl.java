@@ -42,7 +42,13 @@ public abstract class BaseFetchSongFromUrl extends AsyncTask<String, Void, List<
         return null;
     }
 
-    //get list song from json object
+    /**
+     * Get list of songs from jsonObject
+     *
+     * @param jsonObject
+     * @return list of songs
+     * @throws JSONException
+     */
     protected List<Song> getListSong(JSONObject jsonObject) throws JSONException {
         List<Song> arrSongs = new ArrayList<>();
         JSONArray jsonArray = jsonObject.getJSONArray(Song.SongEntry.COLLECTION);
@@ -56,6 +62,19 @@ public abstract class BaseFetchSongFromUrl extends AsyncTask<String, Void, List<
         return arrSongs;
     }
 
+    @Override
+    protected void onPostExecute(List<Song> songs) {
+        if (mListener != null) {
+            mListener.onFetchDataSuccess(songs);
+        }
+    }
+
+    /**
+     * Convert from JsonObject to Song Object
+     *
+     * @param jsonObjectSong jsonObject that want to convert
+     * @return Song Object
+     */
     protected Song convertJsonObjectToSongObject(JSONObject jsonObjectSong) {
         Song mSong = new Song();
         try {
@@ -84,6 +103,13 @@ public abstract class BaseFetchSongFromUrl extends AsyncTask<String, Void, List<
         return mSong;
     }
 
+    /**
+     * Get Json format from url
+     *
+     * @param urlJSON
+     * @return string after formatting json from url
+     * @throws IOException
+     */
     protected String getJSONFormatString(String urlJSON) throws IOException {
         URL url = new URL(urlJSON);
         HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
